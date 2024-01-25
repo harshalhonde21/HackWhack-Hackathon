@@ -70,6 +70,10 @@ const userSchema = new mongoose.Schema({
         required:[true, 'Must required the college Id to proceed'],
         unique: true,
     },
+    files: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'fileHack',
+    }],
     createdAt:{
         type: Date,
         default: Date.now
