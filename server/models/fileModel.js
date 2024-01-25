@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 
 const fileSchema = new mongoose.Schema({
 
-    certificate:{
+    certificateName:{
         type: String,
         required:[true, 'File Name must required'],
     },
     fileUpload:{
         type: String,
-        required: [true, "Please enter your name"],
+        required: [true, "Upload your file"],
     },
    
 })

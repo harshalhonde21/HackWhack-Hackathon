@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from "../../actions/userActions";
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Register = () => {
   const [name, setName] = useState();
@@ -19,6 +20,9 @@ export const Register = () => {
   const [uniqueId, setUniqueId] = useState();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const { isLogin } = useSelector(state => state.user)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,6 +48,18 @@ export const Register = () => {
 
     // console.log(data)
   };
+
+
+
+  useEffect(()=>{
+
+    if(isLogin){
+      navigate("/document")
+    }
+
+  },[isLogin])
+
+
 
   return (
     <>

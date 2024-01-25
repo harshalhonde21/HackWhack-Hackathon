@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route } from "react-router"
 import { About } from "./components/About/About"
 import { NumIncrDecr } from "./components/Test/NumIncrDecr"
@@ -6,8 +7,23 @@ import { Home } from "./components/Home/Home"
 import { Register } from "./components/Auth/Register"
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import {useDispatch} from 'react-redux'
+import { IsLogin } from './actions/userActions'
+import { Document } from './components/Document'
+
+
 
 function App() {
+
+  
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    const LogOrNot = () => {
+      dispatch(IsLogin());
+    }
+    LogOrNot()
+  }, []);
 
 
   return (
@@ -22,6 +38,7 @@ function App() {
 <Route path="/" element={<Home/>} />
 <Route path="/login" element={<Login/>} />
 <Route path="/register" element={<Register/>} />
+<Route path="/document" element={<Document/>} />
 
 </Routes>    
 

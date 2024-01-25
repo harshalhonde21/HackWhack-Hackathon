@@ -30,11 +30,11 @@ export const registerUser = (userData) => async (dispatch) =>{
 
         const {data} = await axios.post('http://localhost:5000/api/register',userData)
         
-        console.log(data)
+        // console.log(data)
 
         dispatch(registerSuccess())
         localStorage.setItem('accesstoken',data.token)
-        toast.success("Register Successful !")
+        toast.success(data.message)
     }catch(err){
         dispatch(registerFail(err.response.data.message))
         if(err.response.data.message.includes("duplicate")){
@@ -42,5 +42,26 @@ export const registerUser = (userData) => async (dispatch) =>{
         }else{
             toast.error(err.response.data.message)
         }
+    }
+}
+
+
+export const IsLogin = () => async (dispatch) =>{
+    try{
+        dispatch(isLoginRequest())
+        
+        const config = {
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+            }
+        }
+
+        const {data} = await axios.get('http://localhost:5000/api/isLogin',config)
+
+        dispatch(isLoginSuccess(data))
+        
+    }catch(err){
+        dispatch(isLoginFail(err.response.data.message))
+        
     }
 }
