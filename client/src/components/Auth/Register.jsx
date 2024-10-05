@@ -64,15 +64,16 @@ export const Register = () => {
   return (
     <>
       <div>
-        <div className="py-12 px-6 bg-blue-100 h-screen flex flex-col items-center justify-center">
-          <div className="text-4xl font-bold text-blue-600 mb-6">
-            Register Details
-          </div>
+        <div className="py-6 px-6 bg-blue-100 min-h-screen flex flex-col items-center justify-center">
+         
 
           <form
             onSubmit={handleSubmit}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           >
+             <div className="text-4xl font-bold text-blue-600 mb-6">
+            Register Details
+          </div>
             <div className="flex flex-row gap-5">
               <div className="mb-4">
                 <label
