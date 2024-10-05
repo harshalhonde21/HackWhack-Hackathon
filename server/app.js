@@ -20,10 +20,13 @@ app.use(fileUpload());
 const user = require("./routes/UserRoutes.js");
 const college = require("./routes/CollegeRoutes.js");
 const file = require("./routes/FileRoutes.js");
+const loginCollege = require("./routes/LoginCollegeRoutes.js") 
+
 
 app.use("/api/", user);
 app.use("/api/college", college)
 app.use("/api/file", file)
+app.use("/api/loginCollege", loginCollege)
 
 app.get("/api/v1/test", (req, res) => {
   res.json("I am working");
